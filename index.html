@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TechSantuy | Premium Gadget Gallery</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        if (localStorage.getItem('darkMode') === 'false') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+    </script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#bec6e0", "surface-container-low": "#151b2d", "primary": "#bec6e0",
+                        "on-background": "#dce1fb", "surface-container": "#191f31", "secondary": "#b6c4ff",
+                        "tertiary": "#dec29a", "background": "#0c1324", "on-surface": "#dce1fb",
+                        "on-surface-variant": "#c6c6cd", "surface-container-high": "#23293c",
+                        "surface-container-highest": "#2e3447", "outline": "#909097",
+                        "on-primary": "#283044", "on-secondary": "#05297a"
+                    },
+                    "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Manrope"] }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .product-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen selection:bg-secondary/30">
+
+<header class="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl flex items-center justify-between px-6 py-4 shadow-lg shadow-slate-950/20">
+    <div class="flex items-center gap-4">
+        <button class="text-slate-200 transition-transform active:scale-90">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <h1 class="text-xl font-bold tracking-tighter text-slate-100 uppercase font-headline cursor-pointer" onclick="location.href='index.html'">TechSantuy</h1>
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-8 text-sm font-bold tracking-tight">
+        <a class="text-indigo-300" href="index.html">Gallery</a>
+        <a class="text-slate-400 hover:text-white transition-colors" href="#">New Arrivals</a>
+        <a class="text-slate-400 hover:text-white transition-colors" href="profile.html">Account</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+        <a href="cart.html" class="relative transition-transform active:scale-90 block">
+            <span class="material-symbols-outlined text-slate-200">shopping_cart</span>
+            <span id="cart-counter" class="absolute -top-1 -right-1 bg-secondary text-on-secondary text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center hidden">0</span>
+        </a>
+        <button class="p-2 rounded-full hover:bg-white/5 transition-colors" id="theme-toggle">
+            <span class="material-symbols-outlined text-slate-200">dark_mode</span>
+        </button>
+    </div>
+</header>
+
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+    <section class="mb-12 rounded-[2.5rem] overflow-hidden relative h-64 md:h-96 flex items-end p-8 bg-slate-900 border border-white/5">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-40" src="https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=1200" alt="Hero"/>
+        <div class="relative z-10 max-w-2xl">
+            <span class="bg-indigo-500/20 text-indigo-300 px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 inline-block border border-indigo-500/30">Curated Tech</span>
+            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white font-headline leading-tight">The Art of Innovation.</h2>
+            <p class="text-on-surface-variant text-lg">Gadgets that blend cinematic aesthetics with professional performance.</p>
+        </div>
+    </section>
+
+    <div class="mb-12 sticky top-24 z-40">
+        <div class="bg-surface-container-highest/80 rounded-2xl flex items-center px-6 py-4 shadow-2xl border border-white/5 backdrop-blur-md">
+            <span class="material-symbols-outlined text-outline mr-4">search</span>
+            <input class="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-outline-variant font-body" id="product-search" placeholder="Search the collection..." type="text"/>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+        
+        <div class="product-card group flex flex-col bg-surface-container-low rounded-[2rem] overflow-hidden hover:translate-y-[-8px] shadow-md cursor-pointer border border-white/5" 
+             onclick="goToDetail(event, '1')" data-id="1" data-title="Spatial Audio Pro" data-price="349" data-img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800">
+            <div class="aspect-square relative overflow-hidden bg-surface-container-highest">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"/>
+                <button class="add-to-cart-btn absolute bottom-4 right-4 bg-primary text-on-primary p-4 rounded-2xl shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90 z-10" onclick="addToCart(event, this)">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-on-surface font-headline">Spatial Audio Pro</h3>
+                    <span class="text-tertiary text-xl font-bold font-headline">$349</span>
+                </div>
+                <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">High-fidelity audio with active noise cancellation and 40h battery life.</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest text-secondary font-bold bg-secondary/10 px-3 py-1 rounded-full">New Arrival</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card group flex flex-col bg-surface-container-low rounded-[2rem] overflow-hidden hover:translate-y-[-8px] shadow-md cursor-pointer border border-white/5" 
+             onclick="goToDetail(event, '2')" data-id="2" data-title="Horizon Watch v2" data-price="449" data-img="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800">
+            <div class="aspect-square relative overflow-hidden bg-surface-container-highest">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"/>
+                <button class="add-to-cart-btn absolute bottom-4 right-4 bg-primary text-on-primary p-4 rounded-2xl shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90 z-10" onclick="addToCart(event, this)">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-on-surface font-headline">Horizon Watch v2</h3>
+                    <span class="text-tertiary text-xl font-bold font-headline">$449</span>
+                </div>
+                <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Aerospace-grade titanium frame with always-on retina display.</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest text-outline font-bold px-3 py-1 bg-white/5 rounded-full">Limited Edition</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card group flex flex-col bg-surface-container-low rounded-[2rem] overflow-hidden hover:translate-y-[-8px] shadow-md cursor-pointer border border-white/5" 
+             onclick="goToDetail(event, '3')" data-id="3" data-title="Lumina X1 Camera" data-price="1299" data-img="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800">
+            <div class="aspect-square relative overflow-hidden bg-surface-container-highest">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800"/>
+                <button class="add-to-cart-btn absolute bottom-4 right-4 bg-primary text-on-primary p-4 rounded-2xl shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90 z-10" onclick="addToCart(event, this)">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-on-surface font-headline">Lumina X1 Camera</h3>
+                    <span class="text-tertiary text-xl font-bold font-headline">$1,299</span>
+                </div>
+                <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Full-frame mirrorless sensor with 4K 120fps recording capability.</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest text-indigo-300 font-bold bg-indigo-500/10 px-3 py-1 rounded-full">Professional</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card group flex flex-col bg-surface-container-low rounded-[2rem] overflow-hidden hover:translate-y-[-8px] shadow-md cursor-pointer border border-white/5" 
+             onclick="goToDetail(event, '4')" data-id="4" data-title="Tactile Mech Keyboard" data-price="189" data-img="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800">
+            <div class="aspect-square relative overflow-hidden bg-surface-container-highest">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800"/>
+                <button class="add-to-cart-btn absolute bottom-4 right-4 bg-primary text-on-primary p-4 rounded-2xl shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90 z-10" onclick="addToCart(event, this)">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-on-surface font-headline">Tactile Mech</h3>
+                    <span class="text-tertiary text-xl font-bold font-headline">$189</span>
+                </div>
+                <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Custom 65% layout with hot-swappable tactile switches.</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold bg-white/5 px-3 py-1 rounded-full">Classic</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card group flex flex-col bg-surface-container-low rounded-[2rem] overflow-hidden hover:translate-y-[-8px] shadow-md cursor-pointer border border-white/5" 
+             onclick="goToDetail(event, '5')" data-id="5" data-title="Neon Blade 16" data-price="2499" data-img="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800">
+            <div class="aspect-square relative overflow-hidden bg-surface-container-highest">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800"/>
+                <button class="add-to-cart-btn absolute bottom-4 right-4 bg-primary text-on-primary p-4 rounded-2xl shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90 z-10" onclick="addToCart(event, this)">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-on-surface font-headline">Neon Blade 16</h3>
+                    <span class="text-tertiary text-xl font-bold font-headline">$2,499</span>
+                </div>
+                <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Unrivaled performance with Liquid Retina XDR display.</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest text-secondary font-bold bg-secondary/10 px-3 py-1 rounded-full">Top Seller</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card group flex flex-col bg-surface-container-low rounded-[2rem] overflow-hidden hover:translate-y-[-8px] shadow-md cursor-pointer border border-white/5" 
+             onclick="goToDetail(event, '6')" data-id="6" data-title="Aura VR Vision" data-price="899" data-img="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800">
+            <div class="aspect-square relative overflow-hidden bg-surface-container-highest">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800"/>
+                <button class="add-to-cart-btn absolute bottom-4 right-4 bg-primary text-on-primary p-4 rounded-2xl shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90 z-10" onclick="addToCart(event, this)">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-on-surface font-headline">Aura VR Vision</h3>
+                    <span class="text-tertiary text-xl font-bold font-headline">$899</span>
+                </div>
+                <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Next-gen spatial computing with dual 4K micro-OLED displays.</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest text-indigo-300 font-bold bg-indigo-500/10 px-3 py-1 rounded-full">Futuristic</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-slate-900/80 backdrop-blur-2xl z-50 rounded-t-[2rem] md:hidden border-t border-white/5 shadow-[0_-10px_25px_rgba(0,0,0,0.5)]">
+    <a class="flex flex-col items-center justify-center text-indigo-300 bg-indigo-500/10 rounded-2xl px-6 py-2" href="index.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[10px] uppercase font-bold mt-1">home</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-500 p-3 hover:text-white" href="cart.html">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span class="text-[10px] uppercase font-bold mt-1">cart</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-500 p-3 hover:text-white" href="profile.html">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-[10px] uppercase font-bold mt-1">profile</span>
+    </a>
+</nav>
+
+<script>
+    function goToDetail(event, id) {
+        if (event.target.closest('.add-to-cart-btn')) return;
+        location.href = `product-detail.html?id=${id}`;
+    }
+
+    function addToCart(event, btn) {
+        event.stopPropagation();
+        const card = btn.closest('.product-card');
+        const product = {
+            id: card.dataset.id,
+            title: card.dataset.title,
+            price: parseFloat(card.dataset.price),
+            img: card.dataset.img,
+            qty: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingIndex = cart.findIndex(item => item.id === product.id);
+
+        if (existingIndex > -1) {
+            cart[existingIndex].qty += 1;
+        } else {
+            cart.push(product);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCounter();
+        
+        // Visual Feedback (Animasi centang)
+        const originalIcon = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined text-emerald-400">check_circle</span>';
+        btn.classList.replace('bg-primary', 'bg-slate-800');
+        setTimeout(() => {
+            btn.innerHTML = originalIcon;
+            btn.classList.replace('bg-slate-800', 'bg-primary');
+        }, 1200);
+    }
+
+    function updateCounter() {
+        const cartCounter = document.getElementById('cart-counter');
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 0), 0);
+        
+        if (totalItems > 0) {
+            cartCounter.textContent = totalItems;
+            cartCounter.classList.remove('hidden');
+        } else {
+            cartCounter.classList.add('hidden');
+        }
+    }
+
+    const searchInput = document.getElementById('product-search');
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        document.querySelectorAll('.product-card').forEach(card => {
+            const title = card.dataset.title.toLowerCase();
+            card.style.display = title.includes(term) ? 'flex' : 'none';
+        });
+    });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('darkMode', isDark);
+        themeToggle.innerHTML = `<span class="material-symbols-outlined text-slate-200">${isDark ? 'dark_mode' : 'light_mode'}</span>`;
+    });
+
+    document.addEventListener('DOMContentLoaded', updateCounter);
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TechSantuy | Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        if (localStorage.getItem('darkMode') === 'false') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#bec6e0",
+                        "surface-container-low": "#151b2d",
+                        "primary": "#bec6e0",
+                        "on-background": "#dce1fb",
+                        "surface-container": "#191f31",
+                        "secondary": "#b6c4ff",
+                        "tertiary": "#dec29a",
+                        "background": "#0c1324",
+                        "on-surface": "#dce1fb",
+                        "on-surface-variant": "#c6c6cd",
+                        "surface-container-high": "#23293c",
+                        "surface-container-highest": "#2e3447",
+                        "on-primary": "#283044",
+                        "on-secondary": "#05297a",
+                        "error": "#ffb4ab"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32 transition-colors duration-500">
+
+<header class="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl shadow-lg flex items-center justify-between px-6 py-4">
+    <div class="flex items-center gap-4">
+        <button class="text-slate-200" onclick="location.href='index.html'">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <h1 class="text-xl font-bold tracking-tighter text-slate-100 uppercase font-headline">TechSantuy</h1>
+    </div>
+    <div class="flex items-center">
+        <a href="cart.html" class="relative">
+            <span class="material-symbols-outlined text-slate-200">shopping_cart</span>
+            <span id="cart-counter" class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+        </a>
+    </div>
+</header>
+
+<main class="pt-24 px-6 max-w-2xl mx-auto space-y-6">
+    <section class="text-center py-6">
+        <div class="relative inline-block mb-4">
+            <div class="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-secondary to-tertiary shadow-xl">
+                <img alt="User Profile" class="w-full h-full rounded-full object-cover border-4 border-background" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop"/>
+            </div>
+            <button class="absolute bottom-1 right-1 bg-surface-container-highest text-white w-9 h-9 rounded-full flex items-center justify-center border-2 border-background shadow-lg">
+                <span class="material-symbols-outlined text-base">edit</span>
+            </button>
+        </div>
+        <h1 class="text-3xl font-extrabold tracking-tight text-on-surface font-headline">Farhan Erik Ramadhan</h1>
+        <p class="text-on-surface-variant text-sm tracking-wide">farhan.erik@techsantuy.io</p>
+    </section>
+
+    <div class="bg-surface-container-low rounded-3xl p-5 flex items-center justify-between border border-white/5">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+            </div>
+            <div>
+                <h3 class="font-bold text-on-surface">Appearance</h3>
+                <p class="text-xs text-on-surface-variant">Switch between dark and light themes</p>
+            </div>
+        </div>
+        <label class="relative inline-flex items-center cursor-pointer">
+            <input id="theme-toggle" type="checkbox" class="sr-only peer"/>
+            <div class="w-14 h-8 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-secondary after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all"></div>
+        </label>
+    </div>
+
+    <div class="bg-surface-container-low rounded-3xl p-6 border border-white/5 space-y-5">
+        <h2 class="text-lg font-bold tracking-tight text-on-surface font-headline">Account Settings</h2>
+        
+        <a class="flex items-center justify-between group" href="#">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-slate-800 flex items-center justify-center text-on-surface-variant group-hover:text-primary">
+                    <span class="material-symbols-outlined">person</span>
+                </div>
+                <span class="font-semibold text-sm">Personal Information</span>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+        </a>
+
+        <a class="flex items-center justify-between group" href="#">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-slate-800 flex items-center justify-center text-on-surface-variant group-hover:text-primary">
+                    <span class="material-symbols-outlined">payments</span>
+                </div>
+                <span class="font-semibold text-sm">Payment Methods</span>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+        </a>
+
+        <a class="flex items-center justify-between group" href="#">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-slate-800 flex items-center justify-center text-on-surface-variant group-hover:text-primary">
+                    <span class="material-symbols-outlined">security</span>
+                </div>
+                <span class="font-semibold text-sm">Privacy & Security</span>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+        </a>
+    </div>
+
+    <div class="bg-surface-container-low rounded-3xl p-6 border border-white/5 space-y-5">
+        <h2 class="text-lg font-bold tracking-tight text-on-surface font-headline">Preferences</h2>
+        
+        <a class="flex items-center justify-between group" href="#">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-slate-800 flex items-center justify-center text-on-surface-variant group-hover:text-primary">
+                    <span class="material-symbols-outlined">notifications</span>
+                </div>
+                <span class="font-semibold text-sm">Push Notifications</span>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+        </a>
+
+        <a class="flex items-center justify-between group" href="#">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-slate-800 flex items-center justify-center text-on-surface-variant group-hover:text-primary">
+                    <span class="material-symbols-outlined">language</span>
+                </div>
+                <span class="font-semibold text-sm">Language</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs text-on-surface-variant">English (US)</span>
+                <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+            </div>
+        </a>
+    </div>
+
+    <button id="logout-btn" class="w-full bg-surface-container-low rounded-3xl p-6 border border-white/5 flex items-center justify-center gap-3 text-error font-bold transition-all active:scale-[0.98]">
+        <span class="material-symbols-outlined">logout</span>
+        Logout from Device
+    </button>
+
+    <div class="text-center pb-12 pt-4">
+        <p class="text-[10px] uppercase tracking-widest text-on-surface-variant">TechSantuy v2.4.1 (Premium Access)</p>
+    </div>
+</main>
+
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-slate-900/80 backdrop-blur-2xl rounded-t-3xl border-t border-white/10 z-50">
+    <a class="flex flex-col items-center justify-center text-slate-500 p-3" href="index.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[10px] uppercase font-bold mt-1">Home</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-500 p-3" href="cart.html">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span class="text-[10px] uppercase font-bold mt-1">Shop</span>
+    </a>
+    <a class="flex flex-col items-center justify-center bg-indigo-500/20 text-indigo-300 rounded-2xl p-3 shadow-lg" href="profile.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+        <span class="text-[10px] uppercase font-bold mt-1">Profile</span>
+    </a>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const cartCounter = document.getElementById('cart-counter');
+
+        // Dark Mode Logic
+        const isDark = localStorage.getItem('darkMode') !== 'false';
+        themeToggle.checked = isDark;
+        themeIcon.innerText = isDark ? 'dark_mode' : 'light_mode';
+
+        themeToggle.addEventListener('change', () => {
+            const check = themeToggle.checked;
+            document.documentElement.classList.toggle('dark', check);
+            themeIcon.innerText = check ? 'dark_mode' : 'light_mode';
+            localStorage.setItem('darkMode', check);
+        });
+
+        // Cart Counter Logic
+        const updateCounter = () => {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const total = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 0), 0);
+            if (total > 0) {
+                cartCounter.textContent = total;
+                cartCounter.classList.remove('hidden');
+            }
+        };
+
+        // Logout Logic
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            if(confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('cart');
+                alert('Logged out successfully');
+                location.href = 'index.html';
+            }
+        });
+
+        updateCounter();
+    });
+</script>
+</body>
+</html>

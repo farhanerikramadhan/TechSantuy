@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TechSantuy | Product Detail</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        if (localStorage.getItem('darkMode') === 'false') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+    </script>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#bec6e0", "surface-container-low": "#151b2d", "primary": "#bec6e0",
+                      "on-background": "#dce1fb", "surface-container": "#191f31", "secondary": "#b6c4ff",
+                      "tertiary": "#dec29a", "background": "#0c1324", "on-surface": "#dce1fb",
+                      "on-surface-variant": "#c6c6cd", "surface-container-high": "#23293c",
+                      "surface-container-highest": "#2e3447", "on-primary": "#283044", "on-secondary": "#05297a"
+              },
+              "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Manrope"] }
+            },
+          },
+        }
+      </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .glass-card { background: rgba(25, 31, 49, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary/30">
+
+<header class="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl shadow-lg flex items-center justify-between px-6 py-4">
+    <div class="flex items-center gap-4">
+        <button class="text-slate-200 transition-transform active:scale-90" onclick="location.href='index.html'">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h1 class="text-xl font-bold tracking-tighter text-slate-100 uppercase font-headline">TechSantuy</h1>
+    </div>
+    <div class="flex items-center">
+        <a href="cart.html" class="relative">
+            <span class="material-symbols-outlined text-slate-200">shopping_cart</span>
+            <span id="cart-counter" class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+        </a>
+    </div>
+</header>
+
+<main class="pt-16 pb-40">
+    <section class="relative w-full aspect-[4/5] overflow-hidden">
+        <img id="product-img" class="w-full h-full object-cover" src="" alt="Product Image"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+        
+        <div class="absolute bottom-10 left-6 right-6">
+            <span id="product-badge" class="inline-block bg-indigo-600 text-white px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 shadow-lg shadow-indigo-500/20">New Arrival</span>
+            <h2 class="text-5xl font-extrabold tracking-tight font-headline text-white leading-[1.1]" id="product-name">Loading...</h2>
+        </div>
+    </section>
+
+    <section class="px-6 space-y-10 max-w-4xl mx-auto -mt-4 relative z-10">
+        <div class="flex justify-between items-start">
+            <div class="space-y-2">
+                <p id="product-cat" class="text-on-surface-variant text-sm font-medium">Category: Gadgets</p>
+                <div class="flex items-center gap-1 text-tertiary">
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="text-xs font-bold">4.9 (Recent Reviews)</span>
+                </div>
+            </div>
+            <p class="text-4xl font-headline font-extrabold text-tertiary tracking-tight" id="product-price">$0.00</p>
+        </div>
+
+        <div class="flex gap-4 overflow-x-auto no-scrollbar py-2" id="spec-container">
+            </div>
+
+        <div class="space-y-4">
+            <h3 class="text-xl font-headline font-bold text-on-background">Description</h3>
+            <p class="text-on-surface-variant leading-relaxed text-sm font-medium opacity-80" id="product-desc">
+                Loading description...
+            </p>
+        </div>
+
+        <div class="glass-card rounded-[2.5rem] p-8 space-y-6">
+            <span class="material-symbols-outlined text-4xl text-primary">verified_user</span>
+            <div>
+                <h4 class="text-xl font-bold font-headline mb-1">Authentic Product</h4>
+                <p class="text-sm text-on-surface-variant font-medium">Comes with official 2-year international warranty and technical support.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="fixed bottom-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-2xl border-t border-white/10 px-6 pb-10 pt-5">
+    <div class="max-w-4xl mx-auto">
+        <button class="w-full bg-slate-200 text-slate-900 font-headline font-extrabold py-5 rounded-2xl transition-all active:scale-95 shadow-2xl flex items-center justify-center gap-3" id="add-to-cart-btn">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+            Add to Selection
+        </button>
+    </div>
+</div>
+
+<div class="fixed top-24 left-1/2 -translate-x-1/2 z-[60] bg-white text-slate-900 px-6 py-3 rounded-full font-bold shadow-2xl opacity-0 translate-y-4 transition-all duration-500 pointer-events-none flex items-center gap-2" id="toast">
+    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+    Added to selection
+</div>
+
+<script>
+    // Database Produk Lengkap (Sinkron dengan index.html)
+    const products = {
+        '1': {
+            id: '1', name: 'Spatial Audio Pro', price: 349, cat: 'Audio Evolution', badge: 'Top Rated',
+            img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800',
+            desc: 'Engineered for the sonic purist. Features bespoke 40mm beryllium drivers, providing an expansive soundstage that breathes life into every note.',
+            specs: [ {icon: 'battery_charging_full', text: '40H Battery'}, {icon: 'graphic_eq', text: 'Active ANC'}, {icon: 'high_quality', text: 'Hi-Res'} ]
+        },
+        '2': {
+            id: '2', name: 'Horizon Watch v2', price: 449, cat: 'Wearables', badge: 'Limited Edition',
+            img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800',
+            desc: 'The ultimate wearable. Crafted with aerospace-grade titanium and protected by unscratchable sapphire crystal glass.',
+            specs: [ {icon: 'water_drop', text: '50M Water'}, {icon: 'monitor_heart', text: 'Health ECG'}, {icon: 'bolt', text: 'Fast Charge'} ]
+        },
+        '3': {
+            id: '3', name: 'Lumina X1 Camera', price: 1299, cat: 'Professional Visual', badge: 'Professional',
+            img: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800',
+            desc: 'Revolutionary full-frame sensor performance. Lumina X1 brings cinematic 8K recording to a compact, weather-sealed body.',
+            specs: [ {icon: 'videocam', text: '8K Video'}, {icon: 'photo_camera', text: '50MP Raw'}, {icon: 'wifi', text: 'NFC Sync'} ]
+        },
+        '4': {
+            id: '4', name: 'Tactile Mech Keyboard', price: 189, cat: 'Workstation', badge: 'Custom Build',
+            img: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800',
+            desc: 'Type with soul. Each switch is hand-lubricated for the perfect acoustic thock and tactile feedback.',
+            specs: [ {icon: 'keyboard', text: 'PBT Keycaps'}, {icon: 'usb', text: 'Wired/BT'}, {icon: 'palette', text: 'RGB Sync'} ]
+        },
+        '5': {
+            id: '5', name: 'Neon Blade 16', price: 2499, cat: 'Workstation', badge: 'Flagship',
+            img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800',
+            desc: 'The world’s most powerful ultra-slim workstation. Liquid Retina XDR meets the latest silicon architecture.',
+            specs: [ {icon: 'memory', text: 'M3 Pro Chip'}, {icon: 'speed', text: '32GB RAM'}, {icon: 'settings_brightness', text: '1600 Nits'} ]
+        },
+        '6': {
+            id: '6', name: 'Aura VR Vision', price: 899, cat: 'Spatial Computing', badge: 'Futuristic',
+            img: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800',
+            desc: 'Step into the future. Dual 4K Micro-OLED displays create an immersive workspace that defies physical boundaries.',
+            specs: [ {icon: 'visibility', text: 'Eye Tracking'}, {icon: '3d_rotation', text: 'Spatial Audio'}, {icon: 'layers', text: 'AR Overlay'} ]
+        }
+    };
+
+    const cartCounter = document.getElementById('cart-counter');
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const toast = document.getElementById('toast');
+    let currentProduct = null;
+
+    function loadProductData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id') || '1'; // Default ke ID 1 jika tidak ada params
+        currentProduct = products[id];
+
+        if (currentProduct) {
+            document.title = `TechSantuy | ${currentProduct.name}`;
+            document.getElementById('product-name').textContent = currentProduct.name;
+            document.getElementById('product-price').textContent = '$' + currentProduct.price.toLocaleString();
+            document.getElementById('product-desc').textContent = currentProduct.desc;
+            document.getElementById('product-img').src = currentProduct.img;
+            document.getElementById('product-cat').textContent = `Category: ${currentProduct.cat}`;
+            document.getElementById('product-badge').textContent = currentProduct.badge;
+
+            // Render Specs
+            const specContainer = document.getElementById('spec-container');
+            specContainer.innerHTML = currentProduct.specs.map(s => `
+                <div class="shrink-0 bg-surface-container-low p-5 rounded-2xl border border-white/5 w-32 flex flex-col items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">${s.icon}</span>
+                    <p class="text-[9px] text-on-surface-variant font-bold uppercase tracking-tighter">${s.text}</p>
+                </div>
+            `).join('');
+        }
+    }
+
+    function updateCartCounter() {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const total = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 0), 0);
+        if (total > 0) {
+            cartCounter.textContent = total;
+            cartCounter.classList.remove('hidden');
+        } else {
+            cartCounter.classList.add('hidden');
+        }
+    }
+
+    function showToast() {
+        toast.classList.remove('opacity-0', 'translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        setTimeout(() => {
+            toast.classList.add('opacity-0', 'translate-y-4');
+            toast.classList.remove('opacity-100', 'translate-y-0');
+        }, 2000);
+    }
+
+    addToCartBtn.addEventListener('click', () => {
+        if (!currentProduct) return;
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const idx = cart.findIndex(item => item.id === currentProduct.id);
+        
+        if (idx > -1) {
+            cart[idx].qty += 1;
+        } else {
+            cart.push({
+                id: currentProduct.id,
+                title: currentProduct.name, // Disamakan key-nya dengan cart.html
+                price: currentProduct.price,
+                img: currentProduct.img,
+                qty: 1
+            });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCounter();
+        showToast();
+    });
+
+    loadProductData();
+    updateCartCounter();
+</script>
+</body>
+</html>

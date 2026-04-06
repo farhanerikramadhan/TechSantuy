@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TechSantuy | Your Selection</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        // Mencegah kedipan putih saat load (Dark Mode Sync)
+        if (localStorage.getItem('darkMode') === 'false') document.documentElement.classList.remove('dark');
+    </script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#bec6e0",
+                        "surface-container-low": "#151b2d",
+                        "primary": "#bec6e0",
+                        "on-background": "#dce1fb",
+                        "surface-container": "#191f31",
+                        "secondary": "#b6c4ff",
+                        "tertiary": "#dec29a",
+                        "background": "#0c1324",
+                        "on-surface": "#dce1fb",
+                        "on-surface-variant": "#c6c6cd",
+                        "surface-container-high": "#23293c",
+                        "surface-container-highest": "#2e3447",
+                        "error": "#ffb4ab"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-secondary/30">
+
+<header class="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl shadow-lg flex items-center justify-between px-6 py-4">
+    <div class="flex items-center gap-4">
+        <button onclick="location.href='index.html'" class="text-slate-200 hover:opacity-80 transition-transform active:scale-90">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h1 class="text-xl font-bold tracking-tighter text-slate-100 uppercase font-headline">TechSantuy</h1>
+    </div>
+    <nav class="hidden md:flex gap-8 items-center text-sm font-bold tracking-tight">
+        <a class="text-slate-400 hover:text-white transition-opacity" href="index.html">EXPLORE</a>
+        <a class="text-indigo-300" href="cart.html">COLLECTIONS</a>
+        <a class="text-slate-400 hover:text-white transition-opacity" href="profile.html">ACCOUNT</a>
+    </nav>
+    <button class="text-slate-200 relative active:scale-90 transition-transform">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span id="cart-dot" class="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full"></span>
+    </button>
+</header>
+
+<main class="pt-24 pb-40 px-4 max-w-4xl mx-auto">
+    <section class="mb-12" id="header-section">
+        <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-primary tracking-tight mb-2">Your Selection</h2>
+        <p class="text-on-surface-variant">Review your curated gadgets before checkout.</p>
+    </section>
+
+    <div class="space-y-6" id="cart-container">
+        </div>
+
+    <div id="summary-section" class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
+        <div class="bg-surface-container p-8 rounded-2xl h-fit">
+            <h4 class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1 rounded-full inline-block mb-6">Promocode</h4>
+            <div class="flex gap-2">
+                <input class="bg-surface-container-highest border-none rounded-xl w-full px-4 py-3 text-sm focus:ring-2 focus:ring-primary/30 text-white placeholder:text-outline" placeholder="ENTER CODE" type="text"/>
+                <button class="bg-primary text-slate-900 px-6 py-3 rounded-xl font-bold text-sm hover:brightness-110 transition-all">APPLY</button>
+            </div>
+        </div>
+        <div class="bg-surface-container-high p-8 rounded-2xl flex flex-col justify-between">
+            <div class="space-y-3">
+                <div class="flex justify-between text-on-surface-variant text-sm font-bold">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between text-on-surface-variant text-sm">
+                    <span>Shipping</span>
+                    <span>$0.00 (Free)</span>
+                </div>
+            </div>
+            <div class="pt-6 mt-6 border-t border-white/5 flex justify-between items-end">
+                <span class="text-on-surface font-headline font-bold text-lg">Total</span>
+                <span id="grand-total" class="text-3xl font-headline font-extrabold text-tertiary tracking-tight">$0.00</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="empty-state" class="hidden py-24 text-center flex flex-col items-center">
+        <div class="w-20 h-20 bg-surface-container flex items-center justify-center rounded-full mb-6">
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant">shopping_bag</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold text-on-surface mb-2">Empty Gallery</h3>
+        <p class="text-on-surface-variant max-w-xs mx-auto mb-8">Your curated collection is currently empty.</p>
+        <a class="bg-primary text-slate-900 px-10 py-4 rounded-xl font-headline font-bold hover:scale-105 transition-transform inline-block" href="index.html">GO TO EXPLORE</a>
+    </div>
+</main>
+
+<div id="sticky-checkout" class="fixed bottom-[88px] md:bottom-0 left-0 w-full px-4 pb-8 z-40 pointer-events-none hidden">
+    <div class="max-w-4xl mx-auto pointer-events-auto">
+        <button id="checkout-trigger" class="w-full glass-panel text-primary font-headline font-extrabold text-lg py-5 rounded-2xl shadow-2xl border-t border-white/10 hover:bg-slate-900 transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
+            PROCEED TO CHECKOUT
+            <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+    </div>
+</div>
+
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-slate-900/80 backdrop-blur-2xl z-50 rounded-t-3xl border-t border-white/10">
+    <a class="flex flex-col items-center p-3 text-slate-500 hover:text-slate-200 transition-colors" href="index.html">
+        <span class="material-symbols-outlined mb-1">home</span>
+        <span class="text-[10px] uppercase font-bold tracking-widest">Home</span>
+    </a>
+    <a class="flex flex-col items-center p-3 text-indigo-300 bg-indigo-500/10 rounded-2xl" href="cart.html">
+        <span class="material-symbols-outlined mb-1">shopping_bag</span>
+        <span class="text-[10px] uppercase font-bold tracking-widest">Cart</span>
+    </a>
+    <a class="flex flex-col items-center p-3 text-slate-500 hover:text-slate-200 transition-colors" href="profile.html">
+        <span class="material-symbols-outlined mb-1">person</span>
+        <span class="text-[10px] uppercase font-bold tracking-widest">Account</span>
+    </a>
+</nav>
+
+<div id="success-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/90 backdrop-blur-md">
+    <div class="bg-surface-container max-w-sm w-full rounded-3xl p-8 text-center shadow-2xl">
+        <div class="w-20 h-20 bg-secondary/20 text-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold text-on-surface mb-3">Order Confirmed</h3>
+        <p class="text-on-surface-variant mb-8">Your acquisition has been processed. A digital curator will contact you shortly.</p>
+        <button onclick="clearCartAndHome()" class="bg-primary text-slate-900 w-full py-4 rounded-xl font-bold hover:opacity-90 transition-opacity">RETURN TO GALLERY</button>
+    </div>
+</div>
+
+<script>
+    // Fungsi Utama: Render Cart dari LocalStorage
+    const renderCart = () => {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const container = document.getElementById('cart-container');
+        const summary = document.getElementById('summary-section');
+        const empty = document.getElementById('empty-state');
+        const header = document.getElementById('header-section');
+        const sticky = document.getElementById('sticky-checkout');
+        const cartDot = document.getElementById('cart-dot');
+
+        if (cart.length === 0) {
+            container.innerHTML = '';
+            summary.classList.add('hidden');
+            sticky.classList.add('hidden');
+            header.classList.add('hidden');
+            empty.classList.remove('hidden');
+            cartDot.classList.add('hidden');
+            return;
+        }
+
+        empty.classList.add('hidden');
+        header.classList.remove('hidden');
+        summary.classList.remove('hidden');
+        sticky.classList.remove('hidden');
+        cartDot.classList.remove('hidden');
+
+        let grandTotal = 0;
+
+        container.innerHTML = cart.map((item, index) => {
+            const itemTotal = item.price * item.qty;
+            grandTotal += itemTotal;
+            return `
+                <div class="cart-item bg-surface-container-low p-5 rounded-xl flex gap-6 items-center group transition-all duration-300 hover:bg-surface-container-high shadow-md">
+                    <div class="w-24 h-24 rounded-lg overflow-hidden bg-surface-container-highest shrink-0">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${item.img}" alt="${item.title}"/>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-1 block">Tech / Premium</span>
+                                <h3 class="text-lg font-headline font-bold text-on-surface">${item.title}</h3>
+                            </div>
+                            <button onclick="removeItem(${index})" class="delete-btn text-on-surface-variant hover:text-error transition-colors p-1">
+                                <span class="material-symbols-outlined text-xl">delete</span>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-end mt-4">
+                            <div class="flex items-center gap-4 bg-surface-container-lowest rounded-full px-4 py-1.5 shadow-inner text-white">
+                                <button onclick="updateQty(${index}, -1)" class="hover:text-primary leading-none text-lg">-</button>
+                                <span class="qty text-sm font-bold w-4 text-center">${item.qty}</span>
+                                <button onclick="updateQty(${index}, 1)" class="hover:text-primary leading-none text-lg">+</button>
+                            </div>
+                            <span class="item-total text-xl font-headline font-bold text-tertiary">$${itemTotal.toLocaleString('en-US', {minimumFractionDigits: 2})}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('subtotal').innerText = `$${grandTotal.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+        document.getElementById('grand-total').innerText = `$${grandTotal.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+    };
+
+    // Fungsi Update Kuantitas
+    window.updateQty = (index, change) => {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart[index].qty += change;
+        
+        if (cart[index].qty <= 0) {
+            cart.splice(index, 1);
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+    };
+
+    // Fungsi Hapus Item
+    window.removeItem = (index) => {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+    };
+
+    // Fungsi Selesaikan Pesanan
+    document.getElementById('checkout-trigger').addEventListener('click', () => {
+        document.getElementById('success-modal').classList.remove('hidden');
+    });
+
+    window.clearCartAndHome = () => {
+        localStorage.removeItem('cart');
+        location.href = 'index.html';
+    };
+
+    // Jalankan render saat halaman dibuka
+    renderCart();
+</script>
+</body>
+</html>
